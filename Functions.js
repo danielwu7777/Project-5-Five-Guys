@@ -1,6 +1,15 @@
 //Created 7/7/2022 by Noah Moon
 //Edited 7/7/2022 by Noah Moon
+//Edited 7/7/2022 by Jake McCann
 const Screen = document.getElementById("screen");
+
+//Created 7/7/2022 by Jake McCann
+//Evaluates equals button functionality
+function equate(){
+    let rightOperand = parseInt(Screen.innerHTML)
+    let result = Operation(LeftOperand, rightOperand)
+    Screen.innerHTML = result;
+}
 
 function printToScreen(text){
     Screen.innerHTML = text;
@@ -59,6 +68,12 @@ function clear(){
     printToScreen("");
 }
 var memory = 0;
+let Operation
+let LeftOperand
+
+//operator buttons
+let operations = document.getElementById("operations")
+operations[4].addEventListener("click", equate)
 
 //num buttons
 console.log(document.getElementById("numbers"))
