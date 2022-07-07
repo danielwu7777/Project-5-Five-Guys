@@ -38,39 +38,6 @@ function memoryReset(){
 }
 
 //Created 7/7/2022 by Noah Moon
-function num1(value){
-    printToScreen(Screen.innerHTML + "1");	
-}	
-
-function num2(){	
-    printToScreen(Screen.innerHTML + "2");	
-}	
-function num3(){	
-    printToScreen(Screen.innerHTML + "3");	
-}	
-function num4(){	
-    printToScreen(Screen.innerHTML + "4");	
-}	
-function num5(){	
-    printToScreen(Screen.innerHTML + "5");	
-}	
-function num6(){	
-    printToScreen(Screen.innerHTML + "6");	
-}	
-function num7(){	
-    printToScreen(Screen.innerHTML + "7");	
-}	
-function num8(){	
-    printToScreen(Screen.innerHTML + "8");	
-}	
-function num9(){	
-    printToScreen(Screen.innerHTML + "9");	
-}	
-function num0(){	
-    printToScreen(Screen.innerHTML + "0");	
-}
-
-//Created 7/7/2022 by Noah Moon
 function numNegative(){
         printToScreen((parseInt(Screen.innerHTML) * -1).toString());
 }
@@ -118,6 +85,11 @@ function multClicked() {
     clear();
 }
 
+// Created 7/7/2022 by Noah Moon
+function numNegative(){
+        printToScreen((parseInt(Screen.innerHTML) * -1).toString());
+}
+
 // Created 7/7/2022 by Daniel Wu
 // Modified 7/7/2022 by Jake McCann: make Operation anonymous
 function divideClicked() {
@@ -128,20 +100,28 @@ function divideClicked() {
     clear();
 }
 
+//Created 7/7/2022 by Noah Moon
+function num(value){
+    printToScreen(Screen.innerHTML + value);
+}
+
+var memory = 0;
+
 //num buttons
+console.log(document.getElementById("numbers"));
 let numButtons = document.getElementById("numbers");
 console.log(numButtons);
-numButtons[0].addEventListener("click", num1); //num 1
-numButtons[1].addEventListener("click", num2); //num 2
-numButtons[2].addEventListener("click", num3); //num 3
-numButtons[3].addEventListener("click", num4); //num 4
-numButtons[4].addEventListener("click", num5); //num 5
-numButtons[5].addEventListener("click", num6); //num 6
-numButtons[6].addEventListener("click", num7); //num 7
-numButtons[7].addEventListener("click", num8); //num 8
-numButtons[8].addEventListener("click", num9); //num 9
+numButtons[0].addEventListener("click", function nums(){ num(numButtons[0].value)}); //num 1
+numButtons[1].addEventListener("click", function nums(){ num(numButtons[1].value)});//num 2
+numButtons[2].addEventListener("click", function nums(){ num(numButtons[2].value)}); //num 3
+numButtons[3].addEventListener("click", function nums(){ num(numButtons[3].value)}); //num 4
+numButtons[4].addEventListener("click", function nums(){ num(numButtons[4].value)}); //num 5
+numButtons[5].addEventListener("click", function nums(){ num(numButtons[5].value)}); //num 6
+numButtons[6].addEventListener("click", function nums(){ num(numButtons[6].value)}); //num 7
+numButtons[7].addEventListener("click", function nums(){ num(numButtons[7].value)}); //num 8
+numButtons[8].addEventListener("click", function nums(){ num(numButtons[8].value)}); //num 9
 numButtons[9].addEventListener("click", numNegative); // negative
-numButtons[10].addEventListener("click", num0); // num 0
+numButtons[10].addEventListener("click", function nums(){ num(numButtons[10].value)}); // num 0
 numButtons[11].addEventListener("click", clear); // clear
 
 //memory buttons
