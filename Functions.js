@@ -2,59 +2,85 @@
 //Edited 7/7/2022 by Noah Moon
 const Screen = document.getElementById("screen");
 
+//Created 7/7/2022 by Noah Moon
 function printToScreen(text){
     Screen.innerHTML = text;
 }
 
+//Created 7/7/2022 by Noah Moon
 function memoryAdd(){
     memory += parseInt(Screen.innerHTML);
     printToScreen(memory);
 }
 
+//Created 7/7/2022 by Noah Moon
 function memorySub(){
     memory -= parseInt(Screen.innerHTML);
     printToScreen(memory);
 }
 
+//Created 7/7/2022 by Noah Moon
 function memoryReset(){
     memory = 0;
     printToScreen(memory);
 }
 
+//Created 7/7/2022 by Noah Moon
 function num1(value){
     printToScreen(Screen.innerHTML + "1");
 }
 
+//Created 7/7/2022 by Noah Moon
 function num2(){
     printToScreen(Screen.innerHTML + "2");
 }
+
+//Created 7/7/2022 by Noah Moon
 function num3(){
     printToScreen(Screen.innerHTML + "3");
 }
+
+//Created 7/7/2022 by Noah Moon
 function num4(){
     printToScreen(Screen.innerHTML + "4");
 }
+
+//Created 7/7/2022 by Noah Moon
 function num5(){
     printToScreen(Screen.innerHTML + "5");
 }
+
+//Created 7/7/2022 by Noah Moon
 function num6(){
     printToScreen(Screen.innerHTML + "6");
 }
+
+//Created 7/7/2022 by Noah Moon
 function num7(){
     printToScreen(Screen.innerHTML + "7");
 }
+
+//Created 7/7/2022 by Noah Moon
 function num8(){
     printToScreen(Screen.innerHTML + "8");
 }
+
+//Created 7/7/2022 by Noah Moon
 function num9(){
     printToScreen(Screen.innerHTML + "9");
 }
+
+//Created 7/7/2022 by Noah Moon
 function num0(){
     printToScreen(Screen.innerHTML + "0");
 }
+
+//Created 7/7/2022 by Noah Moon
 function numNegative(){
         printToScreen((parseInt(Screen.innerHTML) * -1).toString());
 }
+
+//Created 7/7/2022 by Noah Moon
 function clear(){
     printToScreen("");
 }
