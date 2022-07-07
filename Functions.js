@@ -40,12 +40,10 @@ function num(value){
     printToScreen(Screen.innerHTML + value);
 }
 
-var memory = 0;
+let memory = 0;
 
 //num buttons
-console.log(document.getElementById("numbers"));
 let numButtons = document.getElementById("numbers");
-console.log(numButtons);
 numButtons[0].addEventListener("click", function nums(){ num(numButtons[0].value)}); //num 1
 numButtons[1].addEventListener("click", function nums(){ num(numButtons[1].value)});//num 2
 numButtons[2].addEventListener("click", function nums(){ num(numButtons[2].value)}); //num 3
