@@ -1,4 +1,5 @@
 //Created 7/7/2022 by Noah Moon
+<<<<<<< HEAD
 // Edited 7/7/2022 by Daniel Wu: Added functions for arithmetic operations
 const Form = document.getElementById("calculator");
 const Screen = Form.screen;
@@ -32,3 +33,5 @@ function quotient(x, y) {
 }
 
 printToScreen("THIS IS A TEST")
+=======
+>>>>>>> main
