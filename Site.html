@@ -1,39 +1,93 @@
+<!-- Created 7/07/2022 by Noah Moon -->
+<!-- Edited 7/07/2022 by Yuhao Yan -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="Objects.js"></script>
     <script src="Functions.js"></script>
+
+    <style>
+        #calculator{
+            margin: 30%;
+
+        }
+
+        #left_keys,#operations{
+            float: left;
+        }
+
+        #left_keys{
+            margin-right: 8px;
+        }
+
+        input{
+            font-size: 1.8em;
+            font-weight: 600;
+            width : 80px;
+            height: 45px;
+        }
+    </style>
 </head>
+
 <body>
-<form>
-    <textarea name="screen" rows="4" cols="50" readonly>
-    </textarea>
-    <br />
-    <input type="button" name="nums" value="0" />
-    <input type="button" name="nums" value="1" />
-    <input type="button" name="nums" value="2" />
-    <input type="button" name="nums" value="3" />
-    <input type="button" name="nums" value="4" />
-    <input type="button" name="nums" value="5" />
-    <input type="button" name="nums" value="6" />
-    <input type="button" name="nums" value="7" />
-    <input type="button" name="nums" value="8" />
-    <input type="button" name="nums" value="9" />
-    <br />
-    <input type="button" name="arith" value="+" />
-    <input type="button" name="arith" value="-" />
-    <input type="button" name="arith" value="*" />
-    <input type="button" name="arith" value="/" />
-    <br />
-    <input type="button" name="mem" value="M+" />
-    <input type="button" name="mem" value="M-" />
-    <input type="button" name="mem" value="RM" />
-    <br />
-    <input type="button" name="equal" value="=" />
+
+    <div id = "calculator">
+
+        <div>
+            <textarea id="screen" rows="4" cols="45" readonly>
+            </textarea>
+        </div>
+
+        <div id="left_keys">
+            <form id="memory">
+                <input type="button" name="mem" value="M+" />
+                <input type="button" name="mem" value="M-" />
+                <input type="button" name="mem" value="RM" />
+            </form>
+
+            <form id="numbers">
 
 
-</form>
+                <input type="button" name="nums" value="1" />
+                <input type="button" name="nums" value="2" />
+                <input type="button" name="nums" value="3" />
+                <br />
+                <input type="button" name="nums" value="4" />
+                <input type="button" name="nums" value="5" />
+                <input type="button" name="nums" value="6" />
+                <br />
+                <input type="button" name="nums" value="7" />
+                <input type="button" name="nums" value="8" />
+                <input type="button" name="nums" value="9" />
+                <br />
+
+                <input type="button" name="sign" value="+/-" />
+                <input type="button" name="nums" value="0" />
+                <input type="button" name="blank" value=" " />
+
+            </form>
+        </div>
+
+
+
+        <form id="operations">
+            <input type="button" name="arith" value="+" />
+            <br />
+            <input type="button" name="arith" value="-" />
+            <br />
+            <input type="button" name="arith" value="*" />
+            <br />
+            <input type="button" name="arith" value="/" />
+            <br />
+            <input type="button" name="equal" value="=" />
+            <br />
+        </form>
+    </div>
+
+
 </body>
+
 </html>
