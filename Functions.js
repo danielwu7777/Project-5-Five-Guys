@@ -1,6 +1,7 @@
 //Created 7/7/2022 by Noah Moon
 //Edited 7/7/2022 by Noah Moon
-// Edited 7/7/2022 by Daniel Wu: Added functions for arithmetic operations
+//Edited 7/7/2022 by Daniel Wu: Added functions for arithmetic operations
+//Edited 7/7/2022 by Yuhao Yan
 
 const Screen = document.getElementById("screen");
 
@@ -111,15 +112,21 @@ var memory = 0;
 console.log(document.getElementById("numbers"));
 let numButtons = document.getElementById("numbers");
 console.log(numButtons);
-numButtons[0].addEventListener("click", function nums(){ num(numButtons[0].value)}); //num 1
-numButtons[1].addEventListener("click", function nums(){ num(numButtons[1].value)});//num 2
-numButtons[2].addEventListener("click", function nums(){ num(numButtons[2].value)}); //num 3
-numButtons[3].addEventListener("click", function nums(){ num(numButtons[3].value)}); //num 4
-numButtons[4].addEventListener("click", function nums(){ num(numButtons[4].value)}); //num 5
-numButtons[5].addEventListener("click", function nums(){ num(numButtons[5].value)}); //num 6
-numButtons[6].addEventListener("click", function nums(){ num(numButtons[6].value)}); //num 7
-numButtons[7].addEventListener("click", function nums(){ num(numButtons[7].value)}); //num 8
-numButtons[8].addEventListener("click", function nums(){ num(numButtons[8].value)}); //num 9
+
+//Edited 7/7/2022 by Yuhao Yan
+for (let index=0; index<=8; index++)
+{ 
+    numButtons[index].addEventListener("click", function nums(){ num(numButtons[index].value)}); //num 1-9
+}
+// numButtons[0].addEventListener("click", function nums(){ num(numButtons[0].value)}); //num 1
+// numButtons[1].addEventListener("click", function nums(){ num(numButtons[1].value)});//num 2
+// numButtons[2].addEventListener("click", function nums(){ num(numButtons[2].value)}); //num 3
+// numButtons[3].addEventListener("click", function nums(){ num(numButtons[3].value)}); //num 4
+// numButtons[4].addEventListener("click", function nums(){ num(numButtons[4].value)}); //num 5
+// numButtons[5].addEventListener("click", function nums(){ num(numButtons[5].value)}); //num 6
+// numButtons[6].addEventListener("click", function nums(){ num(numButtons[6].value)}); //num 7
+// numButtons[7].addEventListener("click", function nums(){ num(numButtons[7].value)}); //num 8
+// numButtons[8].addEventListener("click", function nums(){ num(numButtons[8].value)}); //num 9
 numButtons[9].addEventListener("click", numNegative); // negative
 numButtons[10].addEventListener("click", function nums(){ num(numButtons[10].value)}); // num 0
 numButtons[11].addEventListener("click", clear); // clear
