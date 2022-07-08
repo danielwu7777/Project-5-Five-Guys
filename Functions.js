@@ -2,8 +2,36 @@
 //Edited 7/7/2022 by Noah Moon
 //Edited 7/7/2022 by Daniel Wu: Added functions for arithmetic operations
 //Edited 7/7/2022 by Yuhao Yan
+//Edited 7/8/2022 by Noah Moon
 
+/* Constants -------------------*/
 const Screen = document.getElementById("screen");
+
+/* Constructors ----------------*/
+//Created 7/8/2022 by Noah moon
+//Constructor for memory object
+function Memory(){
+    let memory = 0;
+    //Created 7/7/2022 by Noah Moon
+    let add = function(){
+        memory += parseInt(Screen.innerHTML);
+        printToScreen(memory);
+    }
+    //Created 7/7/2022 by Noah Moon
+    let subtract = function(){
+        memory -= parseInt(Screen.innerHTML);
+        printToScreen(memory);
+    }
+    //Created 7/7/2022 by Noah Moon
+    let reset = function(){
+        memory = 0;
+        printToScreen(memory);
+    }
+
+    this.functions = [add, subtract, reset]
+}
+
+/* Functions ------------------*/
 
 //Created 7/7/2022 by Jake McCann
 //Edited 7/7/2022 by Daniel Wu
@@ -21,24 +49,6 @@ function printToScreen(text){
 }
 
 //Created 7/7/2022 by Noah Moon
-function memoryAdd(){
-    memory += parseInt(Screen.innerHTML);
-    printToScreen(memory);
-}
-
-//Created 7/7/2022 by Noah Moon
-function memorySub(){
-    memory -= parseInt(Screen.innerHTML);
-    printToScreen(memory);
-}
-
-//Created 7/7/2022 by Noah Moon
-function memoryReset(){
-    memory = 0;
-    printToScreen(memory);
-}
-
-//Created 7/7/2022 by Noah Moon
 function numNegative(){
         printToScreen((parseInt(Screen.innerHTML) * -1).toString());
 }
@@ -48,7 +58,6 @@ function clear(){
     printToScreen("");
 }
 
-var memory = 0;
 let Operation;
 let leftOperand;
 
@@ -106,27 +115,30 @@ function num(value){
     printToScreen(Screen.innerHTML + value);
 }
 
-var memory = 0;
+
+/* Setup --------------------*/
 
 //Created 7/7/2022 by Noah Moon
 //Edited 7/7/2022 by Yuhao Yan
+//Edited 7/8/2022 by Noah Moon
 //num buttons
 let numButtons = document.getElementById("numbers");
-
-for (let index=0; index<=8; index++)
-{ 
-    numButtons[index].addEventListener("click", function nums(){ num(numButtons[index].value)}); //num 1-9
+/* Adds event listener for all number buttons (0-9) */
+for (let button of numButtons.nums){
+    button.addEventListener("click", function(){ num(button.value)});
 }
-numButtons[9].addEventListener("click", numNegative); // negative
-numButtons[10].addEventListener("click", function nums(){ num(numButtons[10].value)}); // num 0
-numButtons[11].addEventListener("click", clear); // clear
+numButtons.sign.addEventListener("click", numNegative); // negative
+numButtons.clear.addEventListener("click", clear); // clear
 
 //Created 7/7/2022 by Noah Moon
+//Created 7//2022 by Noah Moon
 //memory buttons
+let memory = new Memory();
 let memoryButtons = document.getElementById("memory").mem;
-memoryButtons[0].addEventListener("click", memoryAdd); //memory add
-memoryButtons[1].addEventListener("click", memorySub); //memory subtract
-memoryButtons[2].addEventListener("click", memoryReset); //memory reset
+/* Adds event listener for M+, M-, and RM */
+for(let index = 0; index < memoryButtons.length; index++){
+    memoryButtons[index].addEventListener("click", memory.functions[index]);
+}
 
 // Operator buttons
 let operatorButtons = document.getElementById("operations");
