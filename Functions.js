@@ -44,7 +44,6 @@ function printToScreen(text){
     Screen.innerHTML = text;
 }
 
-
 //Created 7/7/2022 by Noah Moon
 function numNegative(){
         printToScreen((parseInt(Screen.innerHTML) * -1).toString());
@@ -121,16 +120,15 @@ let numButtons = document.getElementById("numbers");
 for (let button of numButtons.nums){
     button.addEventListener("click", function(){ num(button.value)});
 }
-
-numButtons[9].addEventListener("click", numNegative); // negative
-numButtons[11].addEventListener("click", clear); // clear
+numButtons.sign.addEventListener("click", numNegative); // negative
+numButtons.clear.addEventListener("click", clear); // clear
 
 //Created 7/7/2022 by Noah Moon
 //memory buttons
 let memory = new Memory();
 let memoryButtons = document.getElementById("memory").mem;
 /* Adds event listener for M+, M-, and RM */
-for(let index = 0; index < memoryButtons.length; index++){
+for(let index for memoryButtons){
     memoryButtons[index].addEventListener("click", memory.functions[index]);
 }
 
