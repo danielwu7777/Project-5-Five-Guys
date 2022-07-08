@@ -36,6 +36,38 @@ function memoryReset(){
     printToScreen(memory);
 }
 
+function num1(value){	//Created 7/7/2022 by Noah Moon
+    printToScreen(Screen.innerHTML + "1");	
+}	
+
+function num2(){	
+    printToScreen(Screen.innerHTML + "2");	
+}	
+function num3(){	
+    printToScreen(Screen.innerHTML + "3");	
+}	
+function num4(){	
+    printToScreen(Screen.innerHTML + "4");	
+}	
+function num5(){	
+    printToScreen(Screen.innerHTML + "5");	
+}	
+function num6(){	
+    printToScreen(Screen.innerHTML + "6");	
+}	
+function num7(){	
+    printToScreen(Screen.innerHTML + "7");	
+}	
+function num8(){	
+    printToScreen(Screen.innerHTML + "8");	
+}	
+function num9(){	
+    printToScreen(Screen.innerHTML + "9");	
+}	
+function num0(){	
+    printToScreen(Screen.innerHTML + "0");	
+}
+
 //Created 7/7/2022 by Noah Moon
 function numNegative(){
         printToScreen((parseInt(Screen.innerHTML) * -1).toString());
