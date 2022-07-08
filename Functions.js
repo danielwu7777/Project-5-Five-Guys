@@ -5,6 +5,7 @@
 const Screen = document.getElementById("screen");
 
 //Created 7/7/2022 by Jake McCann
+//Edited 7/7/2022 by Daniel Wu
 //Evaluates equals button functionality
 function equalClicked(){
     let rightOperand = parseInt(Screen.innerHTML);
