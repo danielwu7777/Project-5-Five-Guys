@@ -131,12 +131,12 @@ numButtons.sign.addEventListener("click", numNegative); // negative
 numButtons.clear.addEventListener("click", clear); // clear
 
 //Created 7/7/2022 by Noah Moon
-//Edited 7/8/2022 by Noah Moon
+//Created 7//2022 by Noah Moon
 //memory buttons
 let memory = new Memory();
 let memoryButtons = document.getElementById("memory").mem;
 /* Adds event listener for M+, M-, and RM */
-for(let index for memoryButtons){
+for(let index = 0; index < memoryButtons.length; index++){
     memoryButtons[index].addEventListener("click", memory.functions[index]);
 }
 
