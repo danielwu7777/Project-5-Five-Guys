@@ -7,12 +7,12 @@ const Screen = document.getElementById("screen");
 
 //Created 7/7/2022 by Jake McCann
 //Edited 7/7/2022 by Daniel Wu
+//Edited 7/7/2022 by Noah Moon
 //Evaluates equals button functionality
 function equalClicked(){
     let rightOperand = parseInt(Screen.innerHTML);
-    clear();
     let result = Operation(leftOperand, rightOperand);
-    Screen.innerHTML = result;
+    printToScreen(result)
 }
 
 //Created 7/7/2022 by Noah moon
@@ -108,12 +108,11 @@ function num(value){
 
 var memory = 0;
 
-//num buttons
-console.log(document.getElementById("numbers"));
-let numButtons = document.getElementById("numbers");
-console.log(numButtons);
-
+//Created 7/7/2022 by Noah Moon
 //Edited 7/7/2022 by Yuhao Yan
+//num buttons
+let numButtons = document.getElementById("numbers");
+
 for (let index=0; index<=8; index++)
 { 
     numButtons[index].addEventListener("click", function nums(){ num(numButtons[index].value)}); //num 1-9
@@ -122,6 +121,7 @@ numButtons[9].addEventListener("click", numNegative); // negative
 numButtons[10].addEventListener("click", function nums(){ num(numButtons[10].value)}); // num 0
 numButtons[11].addEventListener("click", clear); // clear
 
+//Created 7/7/2022 by Noah Moon
 //memory buttons
 let memoryButtons = document.getElementById("memory").mem;
 memoryButtons[0].addEventListener("click", memoryAdd); //memory add
