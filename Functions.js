@@ -14,6 +14,7 @@ function equalClicked(){
     Screen.innerHTML = result;
 }
 
+//Created 7/7/2022 by Noah moon
 function printToScreen(text){
     Screen.innerHTML = text;
 }
@@ -36,7 +37,8 @@ function memoryReset(){
     printToScreen(memory);
 }
 
-function num1(value){	//Created 7/7/2022 by Noah Moon
+//Created 7/7/2022 by Noah Moon
+function num1(value){
     printToScreen(Screen.innerHTML + "1");	
 }	
 
@@ -77,6 +79,7 @@ function numNegative(){
 function clear(){
     printToScreen("");
 }
+
 var memory = 0;
 let Operation;
 let leftOperand;
@@ -86,55 +89,43 @@ function printToScreen(text){
 }
 
 // Created 7/7/2022 by Daniel Wu
+// Modified 7/7/2022 by Jake McCann: make Operation anonymous
 function addClicked() {
     leftOperand = parseInt(Screen.innerHTML);
-    Operation = sum;
+    Operation = function (operand1, operand2) {
+        return operand1 + operand2;
+    }
     clear();
 }
 
 // Created 7/7/2022 by Daniel Wu
+// Modified 7/7/2022 by Jake McCann: make Operation anonymous
 function subtractClicked() {
     leftOperand = parseInt(Screen.innerHTML);
-    Operation = difference;
+    Operation = function (operand1, operand2) {
+        return operand1 - operand2;
+    }
     clear();
 }
 
 // Created 7/7/2022 by Daniel Wu
+// Modified 7/7/2022 by Jake McCann: make Operation anonymous
 function multClicked() {
     leftOperand = parseInt(Screen.innerHTML);
-    Operation = product;
+    Operation = function (operand1, operand2) {
+        return operand1 * operand2;
+    }
     clear();
 }
 
 // Created 7/7/2022 by Daniel Wu
+// Modified 7/7/2022 by Jake McCann: make Operation anonymous
 function divideClicked() {
     leftOperand = parseInt(Screen.innerHTML);
-    Operation = quotient;
+    Operation = function (operand1, operand2) {
+        return operand1 / operand2;
+    }
     clear();
-}
-
-// Created 7/7/2022 by Daniel Wu
-// Takes two integers and returns the sum
-function sum(x, y) {
-    return x + y;
-}
-
-// Created 7/7/2022 by Daniel Wu
-// Takes two integers and returns the first input minus the second
-function difference(left, right) {
-    return left - right;
-}
-
-// Created 7/7/2022 by Daniel Wu
-// Takes two integers and returns the product
-function product(x, y) {
-    return x * y;
-}
-
-// Created 7/7/2022 by Daniel Wu
-// Takes two integers and returns the first input divided by the second
-function quotient(x, y) {
-    return x / y;
 }
 
 //num buttons
