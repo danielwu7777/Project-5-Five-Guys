@@ -5,6 +5,30 @@
 
 const Screen = document.getElementById("screen");
 
+//Created 7/8/2022 by Noah moon
+//Constructor for memory object
+function Memory(){
+    let memory = 0;
+    //Created 7/7/2022 by Noah Moon
+    let add = function(){
+        memory += parseInt(Screen.innerHTML);
+        printToScreen(memory);
+    }
+    //Created 7/7/2022 by Noah Moon
+    let subtract = function(){
+        memory -= parseInt(Screen.innerHTML);
+        printToScreen(memory);
+    }
+    //Created 7/7/2022 by Noah Moon
+    let reset = function(){
+        memory = 0;
+        printToScreen(memory);
+    }
+
+    this.functions = [add, subtract, reset]
+}
+
+
 //Created 7/7/2022 by Jake McCann
 //Edited 7/7/2022 by Daniel Wu
 //Edited 7/7/2022 by Noah Moon
@@ -20,23 +44,6 @@ function printToScreen(text){
     Screen.innerHTML = text;
 }
 
-//Created 7/7/2022 by Noah Moon
-function memoryAdd(){
-    memory += parseInt(Screen.innerHTML);
-    printToScreen(memory);
-}
-
-//Created 7/7/2022 by Noah Moon
-function memorySub(){
-    memory -= parseInt(Screen.innerHTML);
-    printToScreen(memory);
-}
-
-//Created 7/7/2022 by Noah Moon
-function memoryReset(){
-    memory = 0;
-    printToScreen(memory);
-}
 
 //Created 7/7/2022 by Noah Moon
 function numNegative(){
@@ -48,7 +55,6 @@ function clear(){
     printToScreen("");
 }
 
-var memory = 0;
 let Operation;
 let leftOperand;
 
@@ -106,7 +112,7 @@ function num(value){
     printToScreen(Screen.innerHTML + value);
 }
 
-var memory = 0;
+
 
 //Created 7/7/2022 by Noah Moon
 //Edited 7/7/2022 by Yuhao Yan
@@ -123,10 +129,12 @@ numButtons[11].addEventListener("click", clear); // clear
 
 //Created 7/7/2022 by Noah Moon
 //memory buttons
+let memory = new Memory();
 let memoryButtons = document.getElementById("memory").mem;
-memoryButtons[0].addEventListener("click", memoryAdd); //memory add
-memoryButtons[1].addEventListener("click", memorySub); //memory subtract
-memoryButtons[2].addEventListener("click", memoryReset); //memory reset
+/* Adds event listener for M+, M-, and RM */
+for(let index = 0; index < memoryButtons.length; index++){
+    memoryButtons[index].addEventListener("click", memory.functions[index]);
+}
 
 // Operator buttons
 let operatorButtons = document.getElementById("operations");
