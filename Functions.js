@@ -2,9 +2,12 @@
 //Edited 7/7/2022 by Noah Moon
 //Edited 7/7/2022 by Daniel Wu: Added functions for arithmetic operations
 //Edited 7/7/2022 by Yuhao Yan
+//Edited 7/8/2022 by Noah Moon
 
+/* Constants -------------------*/
 const Screen = document.getElementById("screen");
 
+/* Constructors ----------------*/
 //Created 7/8/2022 by Noah moon
 //Constructor for memory object
 function Memory(){
@@ -28,6 +31,7 @@ function Memory(){
     this.functions = [add, subtract, reset]
 }
 
+/* Functions ------------------*/
 
 //Created 7/7/2022 by Jake McCann
 //Edited 7/7/2022 by Daniel Wu
@@ -111,6 +115,9 @@ function num(value){
     printToScreen(Screen.innerHTML + value);
 }
 
+
+/* Setup --------------------*/
+
 //Created 7/7/2022 by Noah Moon
 //Edited 7/7/2022 by Yuhao Yan
 //Edited 7/8/2022 by Noah Moon
@@ -124,6 +131,7 @@ numButtons.sign.addEventListener("click", numNegative); // negative
 numButtons.clear.addEventListener("click", clear); // clear
 
 //Created 7/7/2022 by Noah Moon
+//Edited 7/8/2022 by Noah Moon
 //memory buttons
 let memory = new Memory();
 let memoryButtons = document.getElementById("memory").mem;
