@@ -1,5 +1,6 @@
 //Created 7/7/2022 by Noah Moon
 //Edited 7/12/2022 by Noah Moon
+//Edited 7/12/2022 by Jake McCann
 const UtilityObj = new Utility(); //contains printToScreen and Clear
 
 /*------------------- Constructors ----------------*/
@@ -19,17 +20,20 @@ function Utility(){
 
 //Created 7/8/2022 by Noah moon
 //Edited 7/12/2022 by Noah Moon
+//Edited 7/12/2022 by Jake McCann
 //Constructor for memory object
 function Memory() {
     let memory = 0;
     //Created 7/7/2022 by Noah Moon
+    //Edited 7/12/2022 by Jake McCann: implement decimals
     let add = function () {
-        memory += parseInt(Screen.innerHTML);
+        memory += parseFloat(Screen.innerHTML);
         UtilityObj.printToScreen(memory);
     }
     //Created 7/7/2022 by Noah Moon
+    //Edited 7/12/2022 by Jake McCann: implement decimals
     let subtract = function () {
-        memory -= parseInt(Screen.innerHTML);
+        memory -= parseFloat(Screen.innerHTML);
         UtilityObj.printToScreen(memory);
     }
     //Created 7/7/2022 by Noah Moon
@@ -55,8 +59,9 @@ function Evaluation() {
     // Modified 7/7/2022 by Jake McCann: make operation anonymous
     // Modified 7/12/2022 by Daniel Wu: moved to Evaluation "class"
     // Edited 7/12/2022 by Noah Moon
+    //Edited 7/12/2022 by Jake McCann: implement decimals
     function addClicked() {
-        Evaluation.leftOperand = parseInt(Screen.innerHTML);
+        Evaluation.leftOperand = parseFloat(Screen.innerHTML);
         Evaluation.operation = function (operand1, operand2) {
             return operand1 + operand2;
         }
@@ -67,8 +72,9 @@ function Evaluation() {
     // Modified 7/7/2022 by Jake McCann: make operation anonymous
     // Modified 7/12/2022 by Daniel Wu: moved to Evaluation "class"
     // Edited 7/12/2022 by Noah Moon
+    //Edited 7/12/2022 by Jake McCann: implement decimals
     function subtractClicked() {
-        Evaluation.leftOperand = parseInt(Screen.innerHTML);
+        Evaluation.leftOperand = parseFloat(Screen.innerHTML);
         Evaluation.operation = function (operand1, operand2) {
             return operand1 - operand2;
         }
@@ -79,8 +85,9 @@ function Evaluation() {
     // Modified 7/7/2022 by Jake McCann: make operation anonymous
     // Modified 7/12/2022 by Daniel Wu: moved to Evaluation "class"
     // Edited 7/12/2022 by Noah Moon
+    //Edited 7/12/2022 by Jake McCann: implement decimals
     function multClicked() {
-        Evaluation.leftOperand = parseInt(Screen.innerHTML);
+        Evaluation.leftOperand = parseFloat(Screen.innerHTML);
         Evaluation.operation = function (operand1, operand2) {
             return operand1 * operand2;
         }
@@ -91,8 +98,9 @@ function Evaluation() {
     // Modified 7/7/2022 by Jake McCann: make operation anonymous
     // Modified 7/12/2022 by Daniel Wu: moved to Evaluation "class"
     // Edited 7/12/2022 by Noah Moon
+    //Edited 7/12/2022 by Jake McCann: implement decimals
     function divideClicked() {
-        Evaluation.leftOperand = parseInt(Screen.innerHTML);
+        Evaluation.leftOperand = parseFloat(Screen.innerHTML);
         Evaluation.operation = function (operand1, operand2) {
             return operand1 / operand2;
         }
@@ -103,9 +111,10 @@ function Evaluation() {
     //Edited 7/7/2022 by Daniel Wu
     //Edited 7/7/2022 by Noah Moon
     //Evaluates equals button functionality
-    // Modified 7/12/2022 by Daniel Wu: moved to Evaluation "class"
+    //Modified 7/12/2022 by Daniel Wu: moved to Evaluation "class"
+    //Edited 7/12/2022 by Jake McCann: implement decimals
     function equalClicked() {
-        Evaluation.rightOperand = parseInt(Screen.innerHTML);
+        Evaluation.rightOperand = parseFloat(Screen.innerHTML);
         Evaluation.result = Evaluation.operation(Evaluation.leftOperand, Evaluation.rightOperand);
         UtilityObj.printToScreen(Evaluation.result)
     }
