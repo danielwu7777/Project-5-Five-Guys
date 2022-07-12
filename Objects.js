@@ -47,13 +47,14 @@ function Memory() {
 
 // Created 7/12/2022 by Daniel Wu
 //Edited 7/12/2022 by Noah Moon
+//Edited 7/12/2022 by Jake McCann
 // Constructor for evaluation object
 function Evaluation() {
     let operation;
     let leftOperand;
     let rightOperand;
     let result;
-    this.functions = [addClicked, subtractClicked, multClicked, divideClicked, equalClicked];
+    this.functions = [addClicked, subtractClicked, multClicked, divideClicked, exponentClicked, equalClicked];
 
     // Created 7/7/2022 by Daniel Wu
     // Modified 7/7/2022 by Jake McCann: make operation anonymous
@@ -103,6 +104,15 @@ function Evaluation() {
         Evaluation.leftOperand = parseFloat(Screen.innerHTML);
         Evaluation.operation = function (operand1, operand2) {
             return operand1 / operand2;
+        }
+        UtilityObj.clear();
+    }
+
+    // Created 7/7/2022 by Jake McCann
+    function exponentClicked() {
+        Evaluation.leftOperand = parseFloat(Screen.innerHTML);
+        Evaluation.operation = function (base, exponent) {
+            return Math.pow(base,exponent);
         }
         UtilityObj.clear();
     }
