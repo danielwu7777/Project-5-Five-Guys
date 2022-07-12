@@ -111,15 +111,23 @@ function divideClicked() {
 }
 
 //Created 7/7/2022 by Noah Moon
+// TODO: DELETE THIS METHOD
 function num(value){
     printToScreen(Screen.innerHTML + value);
 }
 
 //Created 7/12/2022 by Noah Moon
 function NumberButton(htmlButton){
-    let printValue = htmlButton.value;
-    htmlButton.addEventListener("click", function(){ num(printValue)} );
+    this.value = htmlButton.value;
+    htmlButton.addEventListener("click", this.printFunc(htmlButton.value) );
 }
+NumberButton.prototype = {
+    printFunc:  function(val){
+        return function x() {
+            printToScreen(Screen.innerHTML + val);
+        };
+    }
+};
 
 
 /* Setup --------------------*/
