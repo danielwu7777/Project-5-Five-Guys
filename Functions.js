@@ -115,17 +115,25 @@ function num(value){
     printToScreen(Screen.innerHTML + value);
 }
 
+//Created 7/12/2022 by Noah Moon
+function NumberButton(htmlButton){
+    let printValue = htmlButton.value;
+    htmlButton.addEventListener("click", function(){ num(printValue)} );
+}
+
 
 /* Setup --------------------*/
 
 //Created 7/7/2022 by Noah Moon
 //Edited 7/7/2022 by Yuhao Yan
 //Edited 7/8/2022 by Noah Moon
+//Edited 7/12/2022 by Noah Moon
 //num buttons
 let numButtons = document.getElementById("numbers");
+let buttonArray = [];
 /* Adds event listener for all number buttons (0-9) */
 for (let button of numButtons.nums){
-    button.addEventListener("click", function(){ num(button.value)});
+    buttonArray.push(new NumberButton(button));
 }
 numButtons.sign.addEventListener("click", numNegative); // negative
 numButtons.clear.addEventListener("click", clear); // clear
