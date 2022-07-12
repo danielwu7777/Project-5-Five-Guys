@@ -49,7 +49,7 @@ function Evaluation() {
     let leftOperand;
     let rightOperand;
     let result;
-    this.functions = [addClicked, subtractClicked, multClicked, divideClicked, equalClicked];
+    this.functions = [addClicked, subtractClicked, multClicked, divideClicked, exponentClicked, equalClicked];
 
     // Created 7/7/2022 by Daniel Wu
     // Modified 7/7/2022 by Jake McCann: make operation anonymous
@@ -95,6 +95,15 @@ function Evaluation() {
         Evaluation.leftOperand = parseInt(Screen.innerHTML);
         Evaluation.operation = function (operand1, operand2) {
             return operand1 / operand2;
+        }
+        UtilityObj.clear();
+    }
+
+    // Created 7/7/2022 by Jake McCann
+    function exponentClicked() {
+        Evaluation.leftOperand = parseFloat(Screen.innerHTML);
+        Evaluation.operation = function (base, exponent) {
+            return base ^ exponent;
         }
         UtilityObj.clear();
     }
