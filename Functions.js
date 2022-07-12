@@ -3,6 +3,7 @@
 //Edited 7/7/2022 by Daniel Wu: Added functions for arithmetic operations
 //Edited 7/7/2022 by Yuhao Yan
 //Edited 7/8/2022 by Noah Moon
+//Edited 7/12/2022 by Noah Moon
 
 /* Constants -------------------*/
 const Screen = document.getElementById("screen");
@@ -48,10 +49,6 @@ function printToScreen(text){
     Screen.innerHTML = text;
 }
 
-//Created 7/7/2022 by Noah Moon
-function numNegative(){
-        printToScreen((parseInt(Screen.innerHTML) * -1).toString());
-}
 
 //Created 7/7/2022 by Noah Moon
 function clear(){
@@ -111,9 +108,24 @@ function divideClicked() {
 }
 
 //Created 7/7/2022 by Noah Moon
+// TODO: DELETE THIS METHOD
 function num(value){
     printToScreen(Screen.innerHTML + value);
 }
+
+//Created 7/12/2022 by Noah Moon
+function NumberButton(htmlButton){
+    this.value = htmlButton.value;
+    htmlButton.addEventListener("click", this.printThis);
+}
+function Button(){
+    this.printThis = function (){
+        printToScreen(Screen.innerHTML + this.value);
+    }
+}
+
+NumberButton.prototype = new Button();
+NumberButton.prototype.constructor = NumberButton;
 
 
 /* Setup --------------------*/
@@ -121,11 +133,13 @@ function num(value){
 //Created 7/7/2022 by Noah Moon
 //Edited 7/7/2022 by Yuhao Yan
 //Edited 7/8/2022 by Noah Moon
+//Edited 7/12/2022 by Noah Moon
 //num buttons
 let numButtons = document.getElementById("numbers");
+let buttonArray = [];
 /* Adds event listener for all number buttons (0-9) */
 for (let button of numButtons.nums){
-    button.addEventListener("click", function(){ num(button.value)});
+    buttonArray.push(new NumberButton(button));
 }
 numButtons.sign.addEventListener("click", numNegative); // negative
 numButtons.clear.addEventListener("click", clear); // clear
