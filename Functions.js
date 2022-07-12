@@ -32,8 +32,7 @@ new SimpleButton(numButtons.clear, function() { UtilityObj.clear(); }); //clear
 
 /* Decimal Button Event Registration */
 new SimpleButton(numButtons.decimal, function() {
-    if(!Screen.innerHTML.includes(".")){ UtilityObj.printToScreen(Screen.innerHTML + "."); }
-    });
+    if(!Screen.innerHTML.includes(".")){ UtilityObj.printToScreen(Screen.innerHTML + "."); } });
 
 
 //Created 7/7/2022 by Noah Moon
