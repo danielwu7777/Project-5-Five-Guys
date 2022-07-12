@@ -1,9 +1,12 @@
 //Created 7/7/2022 by Noah Moon
 //Edited 7/7/2022 by Noah Moon
 //Edited 7/7/2022 by Daniel Wu: Added functions for arithmetic operations
+//Edited 7/7/2022 by Jake McCann
 //Edited 7/7/2022 by Yuhao Yan
 //Edited 7/8/2022 by Noah Moon
 //Edited 7/12/2022 by Noah Moon
+//Edited 7/12/2022 by Jake McCann
+
 
 /*-------------------- Constants -------------------*/
 const Screen = document.getElementById("screen");
@@ -14,6 +17,7 @@ const Screen = document.getElementById("screen");
 //Edited 7/7/2022 by Yuhao Yan
 //Edited 7/8/2022 by Noah Moon
 //Edited 7/12/2022 by Noah Moon
+//Edited 7/12/2022 by Jake McCann
 //num buttons
 let numButtons = document.getElementById("numbers");
 /* Adds event listener for all number buttons (0-9) */
@@ -21,10 +25,15 @@ for (let button of numButtons.nums){
     new NumberButton(button)
 }
 /* Sign Button Event Registration */
-new SimpleButton(numButtons.sign, function() {UtilityObj.printToScreen((parseInt(Screen.innerHTML) * -1).toString());});
+new SimpleButton(numButtons.sign, function() {UtilityObj.printToScreen((parseFloat(Screen.innerHTML) * -1).toString());});
 
 /* Clear Button Event Registration */
 new SimpleButton(numButtons.clear, UtilityObj.clear); //clear
+
+/* Decimal Button Event Registration */
+new SimpleButton(numButtons.dot, function() {
+    if(!Screen.innerHTML.includes(".")){ UtilityObj.printToScreen("."); }
+    }, ".")
 
 
 //Created 7/7/2022 by Noah Moon
