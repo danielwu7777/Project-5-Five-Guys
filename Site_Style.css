@@ -1,0 +1,19 @@
+#calculator{
+    margin-top: 20%;
+    margin-left: 40%;
+}
+
+#left_keys,#operations{
+    float: left;
+}
+
+#left_keys{
+    margin-right: 8px;
+}
+
+input{
+    font-size: 1.8em;
+    font-weight: 600;
+    width : 80px;
+    height: 45px;
+}
