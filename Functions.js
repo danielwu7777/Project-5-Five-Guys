@@ -114,12 +114,18 @@ function num(value){
 }
 
 //Created 7/12/2022 by Noah Moon
+/* Constructor for number buttons
+   -Registers values
+ */
 function NumberButton(htmlButton){
     this.value = htmlButton.value;
-    htmlButton.addEventListener("click", this.printThis);
+    htmlButton.addEventListener("click", this.print);
 }
+
+//Created 7/12/2022 by Noah Moon
+//General "class" for button objects
 function Button(){
-    this.printThis = function (){
+    this.print = function (){
         printToScreen(Screen.innerHTML + this.value);
     }
 }
