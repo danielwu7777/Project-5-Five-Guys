@@ -47,6 +47,7 @@ function Memory() {
 
 // Created 7/12/2022 by Daniel Wu
 //Edited 7/12/2022 by Noah Moon
+//Edited 7/12/2022 by Jake McCann
 // Constructor for evaluation object
 function Evaluation() {
     let operation;
@@ -111,7 +112,7 @@ function Evaluation() {
     function exponentClicked() {
         Evaluation.leftOperand = parseFloat(Screen.innerHTML);
         Evaluation.operation = function (base, exponent) {
-            return base ^ exponent;
+            return Math.pow(base,exponent);
         }
         UtilityObj.clear();
     }
