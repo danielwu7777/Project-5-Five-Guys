@@ -107,31 +107,43 @@ function divideClicked() {
     clear();
 }
 
-//Created 7/7/2022 by Noah Moon
-// TODO: DELETE THIS METHOD
-function num(value){
-    printToScreen(Screen.innerHTML + value);
-}
-
 //Created 7/12/2022 by Noah Moon
 /* Constructor for number buttons
    -Registers values
  */
 function NumberButton(htmlButton){
-    this.value = htmlButton.value;
-    htmlButton.addEventListener("click", this.print);
+    this.setPrintValue(htmlButton.value);
+    new SimpleButton(htmlButton,this.print)
+
+}
+
+//Created 7/12/2022 by Noah Moon
+/* Constructor for any generic button
+   -Registers values
+   -Sets print values (optional)
+ */
+function SimpleButton(htmlButton, clickFunction, printValue){
+    this.setPrintValue(printValue);
+    htmlButton.addEventListener("click", clickFunction);
 }
 
 //Created 7/12/2022 by Noah Moon
 //General "class" for button objects
 function Button(){
-    this.print = function (){
-        printToScreen(Screen.innerHTML + this.value);
+    this.setPrintValue = function(printVal){
+        this.print = function (){
+            printToScreen(Screen.innerHTML + printVal);
+        }
+        this.clearPrint = function (){
+            printToScreen(printVal);
+        }
     }
 }
 
 NumberButton.prototype = new Button();
 NumberButton.prototype.constructor = NumberButton;
+SimpleButton.prototype = new Button();
+SimpleButton.prototype.constructor = SimpleButton;
 
 
 /* Setup --------------------*/
@@ -142,13 +154,13 @@ NumberButton.prototype.constructor = NumberButton;
 //Edited 7/12/2022 by Noah Moon
 //num buttons
 let numButtons = document.getElementById("numbers");
-let buttonArray = [];
 /* Adds event listener for all number buttons (0-9) */
 for (let button of numButtons.nums){
-    buttonArray.push(new NumberButton(button));
+    new NumberButton(button)
 }
-numButtons.sign.addEventListener("click", numNegative); // negative
-numButtons.clear.addEventListener("click", clear); // clear
+new SimpleButton(numButtons.sign, numNegative); //negative
+new SimpleButton(numButtons.clear, clear); //clear
+
 
 //Created 7/7/2022 by Noah Moon
 //Created 7//2022 by Noah Moon
