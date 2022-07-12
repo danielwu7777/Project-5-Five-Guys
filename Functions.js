@@ -4,125 +4,139 @@
 //Edited 7/7/2022 by Yuhao Yan
 //Edited 7/8/2022 by Noah Moon
 
-/* Constants -------------------*/
+/*-------------------- Constants -------------------*/
 const Screen = document.getElementById("screen");
 
-/* Constructors ----------------*/
+/*------------------- Constructors ----------------*/
 //Created 7/8/2022 by Noah moon
 //Constructor for memory object
-function Memory(){
+function Memory() {
     let memory = 0;
     //Created 7/7/2022 by Noah Moon
-    let add = function(){
+    let add = function () {
         memory += parseInt(Screen.innerHTML);
         printToScreen(memory);
     }
     //Created 7/7/2022 by Noah Moon
-    let subtract = function(){
+    let subtract = function () {
         memory -= parseInt(Screen.innerHTML);
         printToScreen(memory);
     }
     //Created 7/7/2022 by Noah Moon
-    let reset = function(){
+    let reset = function () {
         memory = 0;
         printToScreen(memory);
     }
 
-    this.functions = [add, subtract, reset]
+    this.functions = [add, subtract, reset];
 }
 
-/* Functions ------------------*/
+// Created 7/12/2022 by Daniel Wu
+// Constructor for evaluation object
+function Evaluation() {
+    let operation;
+    let leftOperand;
+    let rightOperand;
+    let result;
+    this.functions = [addClicked, subtractClicked, multClicked, divideClicked, equalClicked];
 
-//Created 7/7/2022 by Jake McCann
-//Edited 7/7/2022 by Daniel Wu
-//Edited 7/7/2022 by Noah Moon
-//Evaluates equals button functionality
-function equalClicked(){
-    let rightOperand = parseInt(Screen.innerHTML);
-    let result = Operation(leftOperand, rightOperand);
-    printToScreen(result)
+    // Created 7/7/2022 by Daniel Wu
+    // Modified 7/7/2022 by Jake McCann: make operation anonymous
+    // Modified 7/12/2022 by Daniel Wu: moved to Evaluation "class"
+    function addClicked() {
+        Evaluation.leftOperand = parseInt(Screen.innerHTML);
+        Evaluation.operation = function (operand1, operand2) {
+            return operand1 + operand2;
+        }
+        clear();
+    }
+
+    // Created 7/7/2022 by Daniel Wu
+    // Modified 7/7/2022 by Jake McCann: make operation anonymous
+    // Modified 7/12/2022 by Daniel Wu: moved to Evaluation "class"
+    function subtractClicked() {
+        Evaluation.leftOperand = parseInt(Screen.innerHTML);
+        Evaluation.operation = function (operand1, operand2) {
+            return operand1 - operand2;
+        }
+        clear();
+    }
+
+    // Created 7/7/2022 by Daniel Wu
+    // Modified 7/7/2022 by Jake McCann: make operation anonymous
+    // Modified 7/12/2022 by Daniel Wu: moved to Evaluation "class"
+    function multClicked() {
+        Evaluation.leftOperand = parseInt(Screen.innerHTML);
+        Evaluation.operation = function (operand1, operand2) {
+            return operand1 * operand2;
+        }
+        clear();
+    }
+
+    // Created 7/7/2022 by Daniel Wu
+    // Modified 7/7/2022 by Jake McCann: make operation anonymous
+    // Modified 7/12/2022 by Daniel Wu: moved to Evaluation "class"
+    function divideClicked() {
+        Evaluation.leftOperand = parseInt(Screen.innerHTML);
+        Evaluation.operation = function (operand1, operand2) {
+            return operand1 / operand2;
+        }
+        clear();
+    }
+
+    //Created 7/7/2022 by Jake McCann
+    //Edited 7/7/2022 by Daniel Wu
+    //Edited 7/7/2022 by Noah Moon
+    //Evaluates equals button functionality
+    // Modified 7/12/2022 by Daniel Wu: moved to Evaluation "class"
+    function equalClicked() {
+        Evaluation.rightOperand = parseInt(Screen.innerHTML);
+        Evaluation.result = Evaluation.operation(Evaluation.leftOperand, Evaluation.rightOperand);
+        printToScreen(Evaluation.result)
+    }
 }
+
+/* ---------------- Functions ------------------*/
 
 //Created 7/7/2022 by Noah moon
-function printToScreen(text){
+function printToScreen(text) {
     Screen.innerHTML = text;
 }
 
 //Created 7/7/2022 by Noah Moon
-function numNegative(){
-        printToScreen((parseInt(Screen.innerHTML) * -1).toString());
+function numNegative() {
+    printToScreen((parseInt(Screen.innerHTML) * -1).toString());
 }
 
 //Created 7/7/2022 by Noah Moon
-function clear(){
+function clear() {
     printToScreen("");
 }
 
-let Operation;
-let leftOperand;
-
-function printToScreen(text){
+function printToScreen(text) {
     Screen.innerHTML = text
 }
 
-// Created 7/7/2022 by Daniel Wu
-// Modified 7/7/2022 by Jake McCann: make Operation anonymous
-function addClicked() {
-    leftOperand = parseInt(Screen.innerHTML);
-    Operation = function (operand1, operand2) {
-        return operand1 + operand2;
-    }
-    clear();
-}
-
-// Created 7/7/2022 by Daniel Wu
-// Modified 7/7/2022 by Jake McCann: make Operation anonymous
-function subtractClicked() {
-    leftOperand = parseInt(Screen.innerHTML);
-    Operation = function (operand1, operand2) {
-        return operand1 - operand2;
-    }
-    clear();
-}
-
-// Created 7/7/2022 by Daniel Wu
-// Modified 7/7/2022 by Jake McCann: make Operation anonymous
-function multClicked() {
-    leftOperand = parseInt(Screen.innerHTML);
-    Operation = function (operand1, operand2) {
-        return operand1 * operand2;
-    }
-    clear();
-}
-
 // Created 7/7/2022 by Noah Moon
-function numNegative(){
-        printToScreen((parseInt(Screen.innerHTML) * -1).toString());
+function numNegative() {
+    printToScreen((parseInt(Screen.innerHTML) * -1).toString());
 }
 
-// Created 7/7/2022 by Daniel Wu
-// Modified 7/7/2022 by Jake McCann: make Operation anonymous
-function divideClicked() {
-    leftOperand = parseInt(Screen.innerHTML);
-    Operation = function (operand1, operand2) {
-        return operand1 / operand2;
-    }
-    clear();
-}
+
 
 //Created 7/7/2022 by Noah Moon
 // TODO: DELETE THIS METHOD
-function num(value){
+function num(value) {
     printToScreen(Screen.innerHTML + value);
 }
 
 //Created 7/12/2022 by Noah Moon
-function NumberButton(htmlButton){
+function NumberButton(htmlButton) {
     this.value = htmlButton.value;
-    htmlButton.addEventListener("click", this.printFunc(htmlButton.value) );
+    htmlButton.addEventListener("click", this.printFunc(htmlButton.value));
 }
 NumberButton.prototype = {
-    printFunc:  function(val){
+    printFunc: function (val) {
         return function x() {
             printToScreen(Screen.innerHTML + val);
         };
@@ -130,7 +144,7 @@ NumberButton.prototype = {
 };
 
 
-/* Setup --------------------*/
+/*--------------------- Setup --------------------*/
 
 //Created 7/7/2022 by Noah Moon
 //Edited 7/7/2022 by Yuhao Yan
@@ -140,7 +154,7 @@ NumberButton.prototype = {
 let numButtons = document.getElementById("numbers");
 let buttonArray = [];
 /* Adds event listener for all number buttons (0-9) */
-for (let button of numButtons.nums){
+for (let button of numButtons.nums) {
     buttonArray.push(new NumberButton(button));
 }
 numButtons.sign.addEventListener("click", numNegative); // negative
@@ -152,16 +166,18 @@ numButtons.clear.addEventListener("click", clear); // clear
 let memory = new Memory();
 let memoryButtons = document.getElementById("memory").mem;
 /* Adds event listener for M+, M-, and RM */
-for(let index = 0; index < memoryButtons.length; index++){
+for (let index = 0; index < memoryButtons.length; index++) {
     memoryButtons[index].addEventListener("click", memory.functions[index]);
 }
 
+// Created 7/7/2022 by Daniel Wu
+// Edited 7/12/2022 by Daniel Wu: added for loop for event listeners
 // Operator buttons
+let evaluation = new Evaluation();
 let operatorButtons = document.getElementById("operations");
-operatorButtons[0].addEventListener("click", addClicked); //add button clicked
-operatorButtons[1].addEventListener("click", subtractClicked); //subtract button clicked
-operatorButtons[2].addEventListener("click", multClicked); //multiplication button clicked
-operatorButtons[3].addEventListener("click", divideClicked); //divide button clicked
-operatorButtons[4].addEventListener("click", equalClicked); //equal button clicked
+// Add event listeners for operator buttons
+for (let index = 0; index < operatorButtons.length; index++) {
+    operatorButtons[index].addEventListener("click", evaluation.functions[index]);
+}
 
 printToScreen("");
