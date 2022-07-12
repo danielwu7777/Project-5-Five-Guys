@@ -3,6 +3,7 @@
 //Edited 7/7/2022 by Daniel Wu: Added functions for arithmetic operations
 //Edited 7/7/2022 by Yuhao Yan
 //Edited 7/8/2022 by Noah Moon
+//Edited 7/12/2022 by Noah Moon
 
 /*-------------------- Constants -------------------*/
 const Screen = document.getElementById("screen");
@@ -103,10 +104,6 @@ function printToScreen(text) {
     Screen.innerHTML = text;
 }
 
-//Created 7/7/2022 by Noah Moon
-function numNegative() {
-    printToScreen((parseInt(Screen.innerHTML) * -1).toString());
-}
 
 //Created 7/7/2022 by Noah Moon
 function clear() {
@@ -122,8 +119,6 @@ function numNegative() {
     printToScreen((parseInt(Screen.innerHTML) * -1).toString());
 }
 
-
-
 //Created 7/7/2022 by Noah Moon
 // TODO: DELETE THIS METHOD
 function num(value) {
@@ -131,17 +126,25 @@ function num(value) {
 }
 
 //Created 7/12/2022 by Noah Moon
-function NumberButton(htmlButton) {
+
+/* Constructor for number buttons
+   -Registers values
+ */
+function NumberButton(htmlButton){
     this.value = htmlButton.value;
-    htmlButton.addEventListener("click", this.printFunc(htmlButton.value));
+    htmlButton.addEventListener("click", this.print);
 }
-NumberButton.prototype = {
-    printFunc: function (val) {
-        return function x() {
-            printToScreen(Screen.innerHTML + val);
-        };
+
+//Created 7/12/2022 by Noah Moon
+//General "class" for button objects
+function Button(){
+    this.print = function (){
+        printToScreen(Screen.innerHTML + this.value);
     }
-};
+}
+
+NumberButton.prototype = new Button();
+NumberButton.prototype.constructor = NumberButton;
 
 
 /*--------------------- Setup --------------------*/
