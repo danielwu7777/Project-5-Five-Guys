@@ -8,24 +8,6 @@
 /*-------------------- Constants -------------------*/
 const Screen = document.getElementById("screen");
 
-/* ---------------- Functions ------------------*/
-
-//Created 7/7/2022 by Noah moon
-function printToScreen(text) {
-    Screen.innerHTML = text;
-}
-
-//Created 7/7/2022 by Noah Moon
-function clear() {
-    printToScreen("");
-}
-
-
-// Created 7/7/2022 by Noah Moon
-function numNegative() {
-    printToScreen((parseInt(Screen.innerHTML) * -1).toString());
-}
-
 /*--------------------- Setup --------------------*/
 
 //Created 7/7/2022 by Noah Moon
@@ -38,18 +20,21 @@ let numButtons = document.getElementById("numbers");
 for (let button of numButtons.nums){
     new NumberButton(button)
 }
-new SimpleButton(numButtons.sign, numNegative); //negative
-new SimpleButton(numButtons.clear, clear); //clear
+/* Sign Button Event Registration */
+new SimpleButton(numButtons.sign, function() {UtilityObj.printToScreen((parseInt(Screen.innerHTML) * -1).toString());});
+
+/* Clear Button Event Registration */
+new SimpleButton(numButtons.clear, UtilityObj.clear); //clear
 
 
 //Created 7/7/2022 by Noah Moon
-//Created 7//2022 by Noah Moon
+//Created 7/12/2022 by Noah Moon
 //memory buttons
 let memory = new Memory();
 let memoryButtons = document.getElementById("memory").mem;
 /* Adds event listener for M+, M-, and RM */
 for (let index = 0; index < memoryButtons.length; index++) {
-    memoryButtons[index].addEventListener("click", memory.functions[index]);
+    new SimpleButton(memoryButtons[index], memory.functions[index]);
 }
 
 // Created 7/7/2022 by Daniel Wu
@@ -62,4 +47,4 @@ for (let index = 0; index < operatorButtons.length; index++) {
     operatorButtons[index].addEventListener("click", evaluation.functions[index]);
 }
 
-printToScreen("");
+UtilityObj.printToScreen("");
