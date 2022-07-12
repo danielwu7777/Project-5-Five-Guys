@@ -17,7 +17,7 @@ const Screen = document.getElementById("screen");
 //Edited 7/7/2022 by Yuhao Yan
 //Edited 7/8/2022 by Noah Moon
 //Edited 7/12/2022 by Noah Moon
-//Edited 7/12/2022 by Jake McCann
+//Edited 7/12/2022 by Jake McCann: fix clear button, add decimal button
 //num buttons
 let numButtons = document.getElementById("numbers");
 /* Adds event listener for all number buttons (0-9) */
@@ -28,12 +28,12 @@ for (let button of numButtons.nums){
 new SimpleButton(numButtons.sign, function() {UtilityObj.printToScreen((parseFloat(Screen.innerHTML) * -1).toString());});
 
 /* Clear Button Event Registration */
-new SimpleButton(numButtons.clear, UtilityObj.clear); //clear
+new SimpleButton(numButtons.clear, function() { UtilityObj.clear(); }); //clear
 
 /* Decimal Button Event Registration */
-new SimpleButton(numButtons.dot, function() {
-    if(!Screen.innerHTML.includes(".")){ UtilityObj.printToScreen("."); }
-    }, ".")
+new SimpleButton(numButtons.decimal, function() {
+    if(!Screen.innerHTML.includes(".")){ UtilityObj.printToScreen(Screen.innerHTML + "."); }
+    });
 
 
 //Created 7/7/2022 by Noah Moon
