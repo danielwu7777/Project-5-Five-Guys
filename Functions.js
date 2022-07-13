@@ -6,6 +6,7 @@
 //Edited 7/8/2022 by Noah Moon
 //Edited 7/12/2022 by Noah Moon
 //Edited 7/12/2022 by Jake McCann
+//Edited 7/12/2022 by Yuhao Yan
 
 
 /*-------------------- Constants -------------------*/
@@ -18,6 +19,9 @@ const Screen = document.getElementById("screen");
 //Edited 7/8/2022 by Noah Moon
 //Edited 7/12/2022 by Noah Moon
 //Edited 7/12/2022 by Jake McCann: fix clear button, add decimal button
+//Edited 7/12/2022 by Yuhao Yan: add backspace button
+
+
 //num buttons
 let numButtons = document.getElementById("numbers");
 /* Adds event listener for all number buttons (0-9) */
@@ -33,6 +37,12 @@ new SimpleButton(numButtons.clear, function() { UtilityObj.clear(); }); //clear
 /* Decimal Button Event Registration */
 new SimpleButton(numButtons.decimal, function() {
     if(!Screen.innerHTML.includes(".")){ UtilityObj.printToScreen(Screen.innerHTML + "."); } });
+
+/* Backspace Button Event Registration */
+new SimpleButton(numButtons.back, function() {
+    if(Screen.innerHTML.length>0 && !isNaN(Screen.innerHTML)){
+        UtilityObj.printToScreen(Screen.innerHTML.substr(0,Screen.innerHTML.length-1));
+    }});
 
 
 //Created 7/7/2022 by Noah Moon
