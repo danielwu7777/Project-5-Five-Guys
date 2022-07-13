@@ -2,6 +2,7 @@
 //Edited 7/12/2022 by Noah Moon
 //Edited 7/12/2022 by Jake McCann
 //Edited 7/12/2022 by Yuhao Yan
+//Edited 7/13/2022 by Noah Moon
 
 const UtilityObj = new Utility(); //contains printToScreen and Clear
 
@@ -149,22 +150,23 @@ function Evaluation() {
 }
 
 //Created 7/12/2022 by Noah Moon
-/* Constructor for number buttons
-   -Registers values
- */
-function NumberButton(htmlButton){
-    this.setPrintValue(htmlButton.value);
-    new SimpleButton(htmlButton,this.print);
+//Edited 7/13/2022 by Noah Moon
+/*
+   Constructor for any generic button
 
-}
+   Functionality:
+   - Registers values
+   - Sets print values
 
-//Created 7/12/2022 by Noah Moon
-/* Constructor for any generic button
-   -Registers values
-   -Sets print values (optional)
+   Params:
+   - htmlButton: html element as javascript object
+   - clickFunction: function to be called on click (Optional, print by default)
+   - printValue: what to print when calling this.print or this.clearPrint (Optional, button value by default)
  */
 function SimpleButton(htmlButton, clickFunction, printValue){
-    this.setPrintValue(printValue);
+    printValue = (printValue === undefined) ? htmlButton.value: printValue; // sets default print value to button value
+    this.setPrintValue(printValue); // sets print value, creates print functions
+    clickFunction = (clickFunction === undefined) ? this.print : clickFunction; // sets default function to print
     htmlButton.addEventListener("click", clickFunction);
 }
 
@@ -180,9 +182,6 @@ function Button(){
         }
     }
 }
-
-NumberButton.prototype = new Button();
-NumberButton.prototype.constructor = NumberButton;
 
 SimpleButton.prototype = new Button();
 SimpleButton.prototype.constructor = SimpleButton;
