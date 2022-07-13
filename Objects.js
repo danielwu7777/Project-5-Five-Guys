@@ -1,17 +1,23 @@
 //Created 7/7/2022 by Noah Moon
 //Edited 7/12/2022 by Noah Moon
 //Edited 7/12/2022 by Jake McCann
+//Edited 7/12/2022 by Yuhao Yan
+
 const UtilityObj = new Utility(); //contains printToScreen and Clear
 
 /*------------------- Constructors ----------------*/
 //Created 7/12/2022 by Noah Moon
 function Utility(){
     //Created 7/7/2022 by Noah moon
+    //Edited 7/12/2022 by Yuhao Yan: implement for invalid oprations
     this.printToScreen = function printToScreen(text) {
+        if (text == "NaN") {
+            text = "invalid opration";
+        }
         Screen.innerHTML = text;
     }
 
-//Created 7/7/2022 by Noah Moon
+    //Created 7/7/2022 by Noah Moon
     this.clear = function clear() {
         this.printToScreen("");
     }
