@@ -9,9 +9,9 @@ const UtilityObj = new Utility(); //contains printToScreen and Clear
 //Created 7/12/2022 by Noah Moon
 function Utility(){
     //Created 7/7/2022 by Noah moon
-    //Edited 7/12/2022 by Yuhao Yan: implement for invalid oprations
+    //Edited 7/12/2022 by Yuhao Yan: implement for invalid operations
     this.printToScreen = function printToScreen(text) {
-        if (text == "NaN") {
+        if (text.toString() == "NaN") {
             text = "invalid opration";
         }
         Screen.innerHTML = text;
