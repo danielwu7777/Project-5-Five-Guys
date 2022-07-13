@@ -26,7 +26,7 @@ const Screen = document.getElementById("screen");
 let numButtons = document.getElementById("numbers");
 /* Adds event listener for all number buttons (0-9) */
 for (let button of numButtons.nums){
-    new NumberButton(button)
+    new NumberButton(button);
 }
 /* Sign Button Event Registration */
 new SimpleButton(numButtons.sign, function() {UtilityObj.printToScreen((parseFloat(Screen.innerHTML) * -1).toString());});

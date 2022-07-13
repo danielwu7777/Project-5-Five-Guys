@@ -136,7 +136,7 @@ function Evaluation() {
     function equalClicked() {
         Evaluation.rightOperand = parseFloat(Screen.innerHTML);
         Evaluation.result = Evaluation.operation(Evaluation.leftOperand, Evaluation.rightOperand);
-        UtilityObj.printToScreen(Evaluation.result)
+        UtilityObj.printToScreen(Evaluation.result);
     }
 }
 
@@ -146,7 +146,7 @@ function Evaluation() {
  */
 function NumberButton(htmlButton){
     this.setPrintValue(htmlButton.value);
-    new SimpleButton(htmlButton,this.print)
+    new SimpleButton(htmlButton,this.print);
 
 }
 
