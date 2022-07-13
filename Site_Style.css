@@ -1,3 +1,9 @@
+#screen{
+    font-size: 3em;
+    font-weight: 600;
+    width : 330px;
+}
+
 #calculator{
     margin-top: 20%;
     margin-left: 40%;
