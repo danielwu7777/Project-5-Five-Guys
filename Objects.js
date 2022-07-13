@@ -100,9 +100,13 @@ function Evaluation() {
     // Modified 7/12/2022 by Daniel Wu: moved to Evaluation "class"
     // Edited 7/12/2022 by Noah Moon
     //Edited 7/12/2022 by Jake McCann: implement decimals
+    //Edited 7/12/2022 by Yuhao Yan: implement result when dividing 0
     function divideClicked() {
         Evaluation.leftOperand = parseFloat(Screen.innerHTML);
         Evaluation.operation = function (operand1, operand2) {
+            if(operand2 == 0){
+                return "invalid divisor";
+            }
             return operand1 / operand2;
         }
         UtilityObj.clear();
