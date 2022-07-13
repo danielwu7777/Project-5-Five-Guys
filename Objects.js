@@ -10,7 +10,7 @@ const UtilityObj = new Utility(); //contains printToScreen and Clear
 function Utility(){
     //Created 7/7/2022 by Noah moon
     //Edited 7/12/2022 by Yuhao Yan: implement for invalid operations
-    this.printToScreen = function printToScreen(text) {
+    this.printToScreen = function(text) {
         if (text.toString() == "NaN") {
             text = "invalid opration";
         }
@@ -18,7 +18,7 @@ function Utility(){
     }
 
     //Created 7/7/2022 by Noah Moon
-    this.clear = function clear() {
+    this.clear = function() {
         this.printToScreen("");
     }
 }
@@ -60,16 +60,15 @@ function Evaluation() {
     let leftOperand;
     let rightOperand;
     let result;
-    this.functions = [addClicked, subtractClicked, multClicked, divideClicked, exponentClicked, equalClicked];
+    this.functions = [addClicked, subtractClicked, multClicked, divideClicked, exponentClicked, rootClicked,equalClicked];
 
     // Created 7/7/2022 by Daniel Wu
     // Modified 7/7/2022 by Jake McCann: make operation anonymous
-    // Modified 7/12/2022 by Daniel Wu: moved to Evaluation "class"
-    // Edited 7/12/2022 by Noah Moon
+    // Modified 7/12/2022 by Daniel Wu:e
     //Edited 7/12/2022 by Jake McCann: implement decimals
     function addClicked() {
         Evaluation.leftOperand = parseFloat(Screen.innerHTML);
-        Evaluation.operation = function (operand1, operand2) {
+        Evaluation.operation = function(operand1, operand2) {
             return operand1 + operand2;
         }
         UtilityObj.clear();
@@ -82,7 +81,7 @@ function Evaluation() {
     //Edited 7/12/2022 by Jake McCann: implement decimals
     function subtractClicked() {
         Evaluation.leftOperand = parseFloat(Screen.innerHTML);
-        Evaluation.operation = function (operand1, operand2) {
+        Evaluation.operation = function(operand1, operand2) {
             return operand1 - operand2;
         }
         UtilityObj.clear();
@@ -95,7 +94,7 @@ function Evaluation() {
     //Edited 7/12/2022 by Jake McCann: implement decimals
     function multClicked() {
         Evaluation.leftOperand = parseFloat(Screen.innerHTML);
-        Evaluation.operation = function (operand1, operand2) {
+        Evaluation.operation = function(operand1, operand2) {
             return operand1 * operand2;
         }
         UtilityObj.clear();
@@ -109,7 +108,7 @@ function Evaluation() {
     //Edited 7/12/2022 by Yuhao Yan: implement result when dividing 0
     function divideClicked() {
         Evaluation.leftOperand = parseFloat(Screen.innerHTML);
-        Evaluation.operation = function (operand1, operand2) {
+        Evaluation.operation = function(operand1, operand2) {
             if(operand2 == 0){
                 return "invalid divisor";
             }
@@ -118,11 +117,20 @@ function Evaluation() {
         UtilityObj.clear();
     }
 
-    // Created 7/7/2022 by Jake McCann
+    // Created 7/12/2022 by Jake McCann
     function exponentClicked() {
         Evaluation.leftOperand = parseFloat(Screen.innerHTML);
-        Evaluation.operation = function (base, exponent) {
+        Evaluation.operation = function(base, exponent) {
             return Math.pow(base,exponent);
+        }
+        UtilityObj.clear();
+    }
+
+    // Create 7/12/2022 by Jake McCann
+    function rootClicked() {
+        Evaluation.leftOperand = parseFloat(Screen.innerHTML);
+        Evaluation.operation = function(base, root) {
+            return Math.pow(base,1/root);
         }
         UtilityObj.clear();
     }
