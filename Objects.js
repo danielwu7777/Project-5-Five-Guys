@@ -60,12 +60,11 @@ function Evaluation() {
     let leftOperand;
     let rightOperand;
     let result;
-    this.functions = [addClicked, subtractClicked, multClicked, divideClicked, exponentClicked, equalClicked];
+    this.functions = [addClicked, subtractClicked, multClicked, divideClicked, exponentClicked, rootClicked,equalClicked];
 
     // Created 7/7/2022 by Daniel Wu
     // Modified 7/7/2022 by Jake McCann: make operation anonymous
-    // Modified 7/12/2022 by Daniel Wu: moved to Evaluation "class"
-    // Edited 7/12/2022 by Noah Moon
+    // Modified 7/12/2022 by Daniel Wu:e
     //Edited 7/12/2022 by Jake McCann: implement decimals
     function addClicked() {
         Evaluation.leftOperand = parseFloat(Screen.innerHTML);
