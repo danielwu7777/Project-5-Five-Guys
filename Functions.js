@@ -29,7 +29,8 @@ for (let button of numButtons.nums){
     new NumberButton(button);
 }
 /* Sign Button Event Registration */
-new SimpleButton(numButtons.sign, function() {UtilityObj.printToScreen((parseFloat(Screen.innerHTML) * -1).toString());});
+//Edited 7/12/2022 by Yuhao Yan: remove type coercion to String
+new SimpleButton(numButtons.sign, function() {UtilityObj.printToScreen(parseFloat(Screen.innerHTML) * -1);});
 
 /* Clear Button Event Registration */
 new SimpleButton(numButtons.clear, function() { UtilityObj.clear(); }); //clear
