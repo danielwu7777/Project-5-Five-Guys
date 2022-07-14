@@ -22,6 +22,7 @@ function Utility(){
     //Created 7/7/2022 by Noah Moon
     this.clear = function() {
         this.printToScreen("");
+        enableManager.disable();
     }
 }
 
@@ -217,7 +218,8 @@ function EnableManager(){
     //Created 7/13/2022 by Noah Moon
     function enableController(){
         for(button of operatorButtons){
-            button.disabled = (button.value == "=") ? !evaluation.getIsOp(): evaluation.getIsOp();
+                button.disabled = (button.value == "=") ? !evaluation.getIsOp(): evaluation.getIsOp();
+
         }
         for(button of memoryButtons){
             button.disabled = false;
