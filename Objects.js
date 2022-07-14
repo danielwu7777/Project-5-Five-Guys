@@ -3,16 +3,31 @@
 //Edited 7/12/2022 by Jake McCann
 //Edited 7/12/2022 by Yuhao Yan
 //Edited 7/13/2022 by Noah Moon
+//Edited 7/14/2022 by Noah Moon
 
 /*------------------- Constants ----------------*/
+const Screen = document.getElementById("screen");
 const UtilityObj = new Utility(); //contains printToScreen and Clear
+
+/*-------------------- Objects --------------------*/
+let memory = new Memory();
+let evaluation = new Evaluation();
 
 /*------------------- Constructors ----------------*/
 //Created 7/12/2022 by Noah Moon
+//Edited 7/12/2022 by Yuhao Yan: implement for invalid operations
+//Edited 7/14/2022 by Noah Moon
 function Utility(){
-    //Created 7/7/2022 by Noah moon
+    this.printToScreen = printToScreen;
+    this.clear = clear;
+    this.allClear = allClear;
+    this.start = start;
+    this.disable = disableForBlank;
+    let operatorButtons, memoryButtons, numButtons;
+
+    //Created 7/7/2022 by Noah Moon
     //Edited 7/12/2022 by Yuhao Yan: implement for invalid operations
-    this.printToScreen = function(text) {
+    function printToScreen(text) {
         if (text.toString() == "NaN") {
             text = "invalid operation";
         }
@@ -20,15 +35,38 @@ function Utility(){
     }
 
     //Created 7/7/2022 by Noah Moon
-    this.clear = function() {
-        this.printToScreen("");
-        enableManager.disable();
+    //Edited 7/14/2022 by Noah Moon
+    function clear() {
+        printToScreen("");
+        disableForBlank();
     }
 
     //Created 7/14/2022 by Noah Moon
-    this.allClear = function() {
+    function allClear() {
         memory.functions[2]();
-        UtilityObj.clear();
+        evaluation.reset();
+        clear();
+    }
+
+    //Created 7/14/2022 by Noah Moon
+    function start(opButtons,memButtons,numberButtons) {
+        UtilityObj.printToScreen("");
+        operatorButtons = opButtons;
+        memoryButtons = memButtons;
+        numButtons = numberButtons;
+        disableForBlank();
+    }
+
+    //Created 7/13/2022 by Noah Moon
+    function disableForBlank(){
+        for(let button of operatorButtons){
+            button.disabled = true;
+        }
+        for(let button of memoryButtons){
+            button.disabled = (button == memoryButtons[2]) ? false : true;
+        }
+        numButtons.sign.disabled = true;
+        numButtons.back.disabled = true;
     }
 }
 
@@ -63,15 +101,14 @@ function Memory() {
 // Created 7/12/2022 by Daniel Wu
 //Edited 7/12/2022 by Noah Moon
 //Edited 7/12/2022 by Jake McCann
+//Edited 7/14/2022 by Noah Moon
 // Constructor for evaluation object
 function Evaluation() {
-    let operation;
-    let leftOperand;
-    let rightOperand;
-    let result;
-    this.functions = [addClicked, subtractClicked, multClicked, divideClicked, exponentClicked, rootClicked,equalClicked];
+    let operation, leftOperand, rightOperand, result;
     let isOperator = false;
-    this.getIsOp = function (){return isOperator};
+    this.functions = [addClicked, subtractClicked, multClicked, divideClicked, exponentClicked, rootClicked,equalClicked];
+    this.getIsOp = function (){return isOperator;};
+    this.reset = function (){isOperator = false;};
     // Created 7/7/2022 by Daniel Wu
     // Modified 7/7/2022 by Jake McCann: make operation anonymous
     // Modified 7/12/2022 by Daniel Wu:e
@@ -205,20 +242,7 @@ SimpleButton.prototype = new Button();
 SimpleButton.prototype.constructor = SimpleButton;
 
 //Created 7/13/2022 by Noah Moon
-function EnableManager(){
-    this.disable = disableForBlank;
-
-    //Created 7/13/2022 by Noah Moon
-    function disableForBlank(){
-        for(let button of operatorButtons){
-            button.disabled = true;
-        }
-        for(let button of memoryButtons){
-            button.disabled = (button == memoryButtons[2]) ? false : true;
-        }
-        numButtons.sign.disabled = true;
-        numButtons.back.disabled = true;
-    }
+function EnableManager(operatorButtons, memoryButtons, numButtons){
 
     //Created 7/13/2022 by Noah Moon
     function enableController(){
@@ -236,7 +260,7 @@ function EnableManager(){
     //Created 7/13/2022 by Noah Moon
     function disableController(){
         if (Screen.innerHTML.length <= 1){
-            disableForBlank();
+            UtilityObj.disable();
         }else {
             enableController();
         }

@@ -8,9 +8,9 @@
 //Edited 7/12/2022 by Jake McCann
 //Edited 7/12/2022 by Yuhao Yan
 //Edited 7/13/2022 by Noah Moon
+//Edited 7/14/2022 by Noah Moon
 
 /*-------------------- Constants -------------------*/
-const Screen = document.getElementById("screen");
 const FormArray = document.forms;
 
 /*-------------------- Variables --------------------*/
@@ -19,9 +19,8 @@ let memoryButtons = FormArray[0];
 let operatorButtons = FormArray[2];
 
 /*-------------------- Objects --------------------*/
-let memory = new Memory();
-let evaluation = new Evaluation();
-let enableManager = new EnableManager();
+
+let enableManager = new EnableManager(operatorButtons, memoryButtons, numButtons);
 
 /*--------------------- Setup --------------------*/
 
@@ -75,5 +74,4 @@ for (let index = 0; index < operatorButtons.length; index++) {
     new SimpleButton(operatorButtons[index], evaluation.functions[index]);
 }
 
-UtilityObj.printToScreen("");
-enableManager.disable();
+UtilityObj.start(operatorButtons,memoryButtons,numButtons);
