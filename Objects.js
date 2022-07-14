@@ -14,7 +14,7 @@ function Utility(){
     //Edited 7/12/2022 by Yuhao Yan: implement for invalid operations
     this.printToScreen = function(text) {
         if (text.toString() == "NaN") {
-            text = "invalid opration";
+            text = "invalid operation";
         }
         Screen.innerHTML = text;
     }
@@ -204,10 +204,10 @@ function EnableManager(){
 
     //Created 7/13/2022 by Noah Moon
     function disableForBlank(){
-        for(button of operatorButtons){
+        for(let button of operatorButtons){
             button.disabled = true;
         }
-        for(button of memoryButtons){
+        for(let button of memoryButtons){
             button.disabled = (button == memoryButtons[2]) ? false : true;
         }
         numButtons.sign.disabled = true;
@@ -216,11 +216,11 @@ function EnableManager(){
 
     //Created 7/13/2022 by Noah Moon
     function enableController(){
-        for(button of operatorButtons){
+        for(let button of operatorButtons){
                 button.disabled = (button.value == "=") ? !evaluation.getIsOp(): evaluation.getIsOp();
 
         }
-        for(button of memoryButtons){
+        for(let button of memoryButtons){
             button.disabled = false;
         }
         numButtons.sign.disabled = false;
