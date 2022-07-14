@@ -6,6 +6,7 @@
 
 const UtilityObj = new Utility(); //contains printToScreen and Clear
 
+
 /*------------------- Constructors ----------------*/
 //Created 7/12/2022 by Noah Moon
 function Utility(){
@@ -62,7 +63,8 @@ function Evaluation() {
     let rightOperand;
     let result;
     this.functions = [addClicked, subtractClicked, multClicked, divideClicked, exponentClicked, rootClicked,equalClicked];
-
+    let isOperator = false;
+    this.getIsOp = function (){return isOperator}
     // Created 7/7/2022 by Daniel Wu
     // Modified 7/7/2022 by Jake McCann: make operation anonymous
     // Modified 7/12/2022 by Daniel Wu:e
@@ -72,7 +74,9 @@ function Evaluation() {
         Evaluation.operation = function(operand1, operand2) {
             return operand1 + operand2;
         }
+        isOperator = true;
         UtilityObj.clear();
+
     }
 
     // Created 7/7/2022 by Daniel Wu
@@ -85,6 +89,7 @@ function Evaluation() {
         Evaluation.operation = function(operand1, operand2) {
             return operand1 - operand2;
         }
+        isOperator = true;
         UtilityObj.clear();
     }
 
@@ -98,6 +103,7 @@ function Evaluation() {
         Evaluation.operation = function(operand1, operand2) {
             return operand1 * operand2;
         }
+        isOperator = true;
         UtilityObj.clear();
     }
 
@@ -115,6 +121,7 @@ function Evaluation() {
             }
             return operand1 / operand2;
         }
+        isOperator = true;
         UtilityObj.clear();
     }
 
@@ -124,6 +131,7 @@ function Evaluation() {
         Evaluation.operation = function(base, exponent) {
             return Math.pow(base,exponent);
         }
+        isOperator = true;
         UtilityObj.clear();
     }
 
@@ -133,6 +141,7 @@ function Evaluation() {
         Evaluation.operation = function(base, root) {
             return Math.pow(base,1/root);
         }
+        isOperator = true;
         UtilityObj.clear();
     }
 
@@ -145,8 +154,11 @@ function Evaluation() {
     function equalClicked() {
         Evaluation.rightOperand = parseFloat(Screen.innerHTML);
         Evaluation.result = Evaluation.operation(Evaluation.leftOperand, Evaluation.rightOperand);
+        isOperator = false;
         UtilityObj.printToScreen(Evaluation.result);
+
     }
+
 }
 
 //Created 7/12/2022 by Noah Moon
@@ -185,3 +197,45 @@ function Button(){
 
 SimpleButton.prototype = new Button();
 SimpleButton.prototype.constructor = SimpleButton;
+
+//Created 7/13/2022 by Noah Moon
+function EnableManager(){
+    this.disable = disableForBlank;
+
+    //Created 7/13/2022 by Noah Moon
+    function disableForBlank(){
+        for(button of operatorButtons){
+            button.disabled = true;
+        }
+        for(button of memoryButtons){
+            button.disabled = (button == memoryButtons[2]) ? false : true;
+        }
+        numButtons.sign.disabled = true;
+        numButtons.back.disabled = true;
+    }
+
+    //Created 7/13/2022 by Noah Moon
+    function enableController(){
+        for(button of operatorButtons){
+            button.disabled = (button.value == "=") ? !evaluation.getIsOp(): evaluation.getIsOp();
+        }
+        for(button of memoryButtons){
+            button.disabled = false;
+        }
+        numButtons.sign.disabled = false;
+        numButtons.back.disabled = false;
+
+    }
+    //Created 7/13/2022 by Noah Moon
+    function disableController(){
+        if (Screen.innerHTML.length <= 1){
+            disableForBlank();
+        }else {
+            enableController();
+        }
+    }
+
+    Screen.addEventListener("DOMNodeInserted", enableController);
+    Screen.addEventListener("DOMNodeRemoved", disableController);
+
+}

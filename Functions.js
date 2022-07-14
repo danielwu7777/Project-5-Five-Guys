@@ -66,4 +66,7 @@ for (let index = 0; index < operatorButtons.length; index++) {
     operatorButtons[index].addEventListener("click", evaluation.functions[index]);
 }
 
+let enableManager = new EnableManager();
+
 UtilityObj.printToScreen("");
+enableManager.disable();
