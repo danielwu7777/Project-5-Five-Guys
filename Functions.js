@@ -55,6 +55,9 @@ new SimpleButton(numButtons.back, function() {
         UtilityObj.printToScreen(Screen.innerHTML.substr(0,Screen.innerHTML.length-1));
     }});
 
+/* All Clear button registration */
+new SimpleButton(numButtons.allClear,UtilityObj.allClear);
+
 //Created 7/7/2022 by Noah Moon
 //Created 7/12/2022 by Noah Moon
 /*--- Memory button registration ---*/
