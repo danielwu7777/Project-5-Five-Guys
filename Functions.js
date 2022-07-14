@@ -13,6 +13,16 @@
 const Screen = document.getElementById("screen");
 const FormArray = document.forms;
 
+/*-------------------- Variables --------------------*/
+let numButtons = FormArray[1];
+let memoryButtons = FormArray[0];
+let operatorButtons = FormArray[2];
+
+/*-------------------- Objects --------------------*/
+let memory = new Memory();
+let evaluation = new Evaluation();
+let enableManager = new EnableManager();
+
 /*--------------------- Setup --------------------*/
 
 //Created 7/7/2022 by Noah Moon
@@ -23,8 +33,7 @@ const FormArray = document.forms;
 //Edited 7/12/2022 by Yuhao Yan: add backspace button
 //Edited 7/13/2022 by Noah Moon
 
-//num buttons
-let numButtons = FormArray[1];
+/*--- Num Button Registration ---*/
 /* Adds event listener for all number buttons (0-9) */
 for (let button of numButtons.nums){
     new SimpleButton(button);
@@ -48,9 +57,7 @@ new SimpleButton(numButtons.back, function() {
 
 //Created 7/7/2022 by Noah Moon
 //Created 7/12/2022 by Noah Moon
-//memory buttons
-let memory = new Memory();
-let memoryButtons = FormArray[0];
+/*--- Memory button registration ---*/
 /* Adds event listener for M+, M-, and RM */
 for (let index = 0; index < memoryButtons.length; index++) {
     new SimpleButton(memoryButtons[index], memory.functions[index]);
@@ -58,15 +65,12 @@ for (let index = 0; index < memoryButtons.length; index++) {
 
 // Created 7/7/2022 by Daniel Wu
 // Edited 7/12/2022 by Daniel Wu: added for loop for event listeners
-// Operator buttons
-let evaluation = new Evaluation();
-let operatorButtons = FormArray[2];
+// Edited 7/13/2022 by Noah Moon
+/*--- Operator button registration ---*/
 // Add event listeners for operator buttons
 for (let index = 0; index < operatorButtons.length; index++) {
-    operatorButtons[index].addEventListener("click", evaluation.functions[index]);
+    new SimpleButton(operatorButtons[index], evaluation.functions[index]);
 }
-
-let enableManager = new EnableManager();
 
 UtilityObj.printToScreen("");
 enableManager.disable();

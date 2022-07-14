@@ -4,8 +4,8 @@
 //Edited 7/12/2022 by Yuhao Yan
 //Edited 7/13/2022 by Noah Moon
 
+/*------------------- Constants ----------------*/
 const UtilityObj = new Utility(); //contains printToScreen and Clear
-
 
 /*------------------- Constructors ----------------*/
 //Created 7/12/2022 by Noah Moon
@@ -65,7 +65,7 @@ function Evaluation() {
     let result;
     this.functions = [addClicked, subtractClicked, multClicked, divideClicked, exponentClicked, rootClicked,equalClicked];
     let isOperator = false;
-    this.getIsOp = function (){return isOperator}
+    this.getIsOp = function (){return isOperator};
     // Created 7/7/2022 by Daniel Wu
     // Modified 7/7/2022 by Jake McCann: make operation anonymous
     // Modified 7/12/2022 by Daniel Wu:e
@@ -74,7 +74,7 @@ function Evaluation() {
         Evaluation.leftOperand = parseFloat(Screen.innerHTML);
         Evaluation.operation = function(operand1, operand2) {
             return operand1 + operand2;
-        }
+        };
         isOperator = true;
         UtilityObj.clear();
 
@@ -89,7 +89,7 @@ function Evaluation() {
         Evaluation.leftOperand = parseFloat(Screen.innerHTML);
         Evaluation.operation = function(operand1, operand2) {
             return operand1 - operand2;
-        }
+        };
         isOperator = true;
         UtilityObj.clear();
     }
@@ -103,7 +103,7 @@ function Evaluation() {
         Evaluation.leftOperand = parseFloat(Screen.innerHTML);
         Evaluation.operation = function(operand1, operand2) {
             return operand1 * operand2;
-        }
+        };
         isOperator = true;
         UtilityObj.clear();
     }
@@ -121,7 +121,7 @@ function Evaluation() {
                 return "invalid divisor";
             }
             return operand1 / operand2;
-        }
+        };
         isOperator = true;
         UtilityObj.clear();
     }
@@ -131,7 +131,7 @@ function Evaluation() {
         Evaluation.leftOperand = parseFloat(Screen.innerHTML);
         Evaluation.operation = function(base, exponent) {
             return Math.pow(base,exponent);
-        }
+        };
         isOperator = true;
         UtilityObj.clear();
     }
@@ -141,7 +141,7 @@ function Evaluation() {
         Evaluation.leftOperand = parseFloat(Screen.innerHTML);
         Evaluation.operation = function(base, root) {
             return Math.pow(base,1/root);
-        }
+        };
         isOperator = true;
         UtilityObj.clear();
     }
@@ -157,7 +157,6 @@ function Evaluation() {
         Evaluation.result = Evaluation.operation(Evaluation.leftOperand, Evaluation.rightOperand);
         isOperator = false;
         UtilityObj.printToScreen(Evaluation.result);
-
     }
 
 }
@@ -189,10 +188,10 @@ function Button(){
     this.setPrintValue = function(printVal){
         this.print = function (){
             UtilityObj.printToScreen(Screen.innerHTML + printVal);
-        }
+        };
         this.clearPrint = function (){
             UtilityObj.printToScreen(printVal);
-        }
+        };
     }
 }
 
@@ -239,5 +238,4 @@ function EnableManager(){
 
     Screen.addEventListener("DOMNodeInserted", enableController);
     Screen.addEventListener("DOMNodeRemoved", disableController);
-
 }
