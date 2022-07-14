@@ -42,7 +42,7 @@ new SimpleButton(numButtons.decimal, function() {
 
 /* Backspace Button Event Registration */
 new SimpleButton(numButtons.back, function() {
-    if(Screen.innerHTML.length>0 && !isNaN(Screen.innerHTML)){
+    if(Screen.innerHTML.length>0 && !isNaN(Screen.innerHTML) && Screen.innerHTML!="Infinity"){
         UtilityObj.printToScreen(Screen.innerHTML.substr(0,Screen.innerHTML.length-1));
     }});
 
