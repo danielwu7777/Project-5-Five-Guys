@@ -24,6 +24,12 @@ function Utility(){
         this.printToScreen("");
         enableManager.disable();
     }
+
+    //Created 7/14/2022 by Noah Moon
+    this.allClear = function() {
+        memory.functions[2]();
+        UtilityObj.clear();
+    }
 }
 
 
