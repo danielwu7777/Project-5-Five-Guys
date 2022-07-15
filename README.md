@@ -3,9 +3,11 @@
 Positions:
 
 - Jake: Project manager / meeting manager
-  - Tasks: 
+  - Tasks: Equals Button, Root button, Exponent button, implement decimals
+  
 - Hao: Implementation Manager
   - Tasks: 
+  
 - Daniel: Documentation Manager
   - Tasks: Evaluation class object, Operator button registration, Arithmetic operation tests
 
