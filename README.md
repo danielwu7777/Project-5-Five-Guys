@@ -6,7 +6,7 @@ Positions:
   - Tasks: Equals Button, Root button, Exponent button, implement decimals
   
 - Hao: Implementation Manager
-  - Tasks: 
+  - Tasks: Web display and UI design, Backspace button, output logic for display when the divisor is 0 or other invalid operations, number buttons' chaining.
   
 - Daniel: Documentation Manager
   - Tasks: Evaluation class object, Operator button registration, Arithmetic operation tests
